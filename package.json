@@ -1,0 +1,22 @@
+{
+  "name": "testapp",
+  "version": "1.0.0",
+  "description": "A supersmall Hello world test app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ironboy/testapp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ironboy/testapp/issues"
+  },
+  "homepage": "https://github.com/ironboy/testapp#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
