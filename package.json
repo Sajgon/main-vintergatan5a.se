@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/ironboy/testapp#readme",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "phantom": "^4.0.9",
+    "phantomjs-prebuilt": "^2.1.16",
+    "scraperjs": "^1.2.0"
   }
 }
