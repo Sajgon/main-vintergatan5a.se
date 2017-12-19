@@ -22,7 +22,7 @@ async function scrapeDN(){
         }).get();
     });
     newsFromDN = news;
-    console.log(news);
+    //console.log(news);
 }
 
 async function scrapeAftonbladet(){
@@ -36,7 +36,7 @@ async function scrapeAftonbladet(){
         }).get();
     });
     newsFromAB = news;
-    console.log(news);
+    //console.log(news);
 }
 
 
@@ -45,6 +45,8 @@ scrapeDN();
 
 scrapeAftonbladet();
 //setInterval(scrapeAftonbladet, 60*1000);
+
+app.use(express.static(__dirname + '/www'));
 
 //app.get('*',(req,res) => res.send('Hello world!'));
 app.get('/ab-news',(req,res) => {
@@ -63,8 +65,9 @@ app.get('/all-news', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    app.use(express.static(__dirname + '/www'));
+  
 });
+
 
 app.listen(4001,() =>
     console.log('Listening on port 4001')
