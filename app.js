@@ -64,7 +64,7 @@ app.get('/all-news', (req, res) => {
 
 app.get('/', (req, res) => {
     app.use(express.static(__dirname + '/www'));
-}
+});
 
 app.listen(4001,() =>
     console.log('Listening on port 4001')
