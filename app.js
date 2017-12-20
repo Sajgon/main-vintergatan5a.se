@@ -82,7 +82,7 @@ app.listen(4001,() =>
 
 async function test(){
   let tables = await db.query('SHOW TABLES');
-  console.log(new Date().getTime();
+  console.log(new Date());
   console.log("database tables", tables);
 }
 
