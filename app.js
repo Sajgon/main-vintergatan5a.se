@@ -12,13 +12,23 @@ const scraperjs = require('scraperjs');
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
  
+ 
+ // Database Name
+const dbName = 'Vintergatan5a-analystics';
+
 // Connection URL
-var url = 'mongodb://localhost:27017/Vintergatan5a-analystics';
+var url = 'mongodb://localhost:27017/'+dbName;
+
+
+
 // Use connect method to connect to the Server
 MongoClient.connect(url, function(err, db) {
   assert.equal(null, err);
   console.log("Connected correctly to server");
  
+ 
+ const collection = db.collection('vititors');
+    console.log("collection", collection);
   db.close();
 });
 
