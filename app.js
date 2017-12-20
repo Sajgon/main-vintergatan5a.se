@@ -5,7 +5,7 @@ const scraperjs = require('scraperjs');
 const pm = require("promisemaker");
 const mysql = require('mysql');
 const credentials = require('../credentials.js');   // Hämta mysql credentials
-console.log("credentials", credentials);
+// console.log("credentials", credentials);
 const db = pm(mysql.createConnection(credentials));
 
 
@@ -70,7 +70,21 @@ app.get('/all-news', (req, res) => {
   )
 });
 
-app.get('/', (req, res) => {
+
+app.get('/visitors', (req, res) => {
+    console.log("Yeey! a user visitor.......");
+        
+    async function test(){
+        let tables = await db.query('SHOW TABLES');
+        console.log("database tables", tables);
+    }
+      
+    test();
+    
+    console.log(":)");
+});
+
+app.get('*', (req, res) => {
      console.log("Yeey! a user visitor.");
         
     async function test(){
