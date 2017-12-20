@@ -4,6 +4,8 @@ const app = express();
 const scraperjs = require('scraperjs');
 const pm = require("promisemaker");
 const mysql = require('mysql');
+var db = require('../credentials.js');   // Hämta mysql credentials
+
 /*
     SCRAPING
     SCRAPING
@@ -73,22 +75,7 @@ app.listen(4001,() =>
 
 
 
-
-// get database tables
-const db = pm(
-  mysql.createConnection({
-    host: "127.0.0.1",
-    user: "root",
-    password: "x8zxwa9c",
-    database: "Vintergatan5a"
-  }),
-  {
-    rejectOnErrors: false,
-    mapArgsToProps: {
-      query: ["rows", "fields"]
-    }
-  }
-);
+console.log(db);
 
 async function test(){
   let tables = await db.query('SHOW TABLES');
