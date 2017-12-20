@@ -40,8 +40,9 @@ MongoClient.connect(url, function(err, client) {
         callback(docs);
       });
     }
+
+    findDocuments();
     
-   
     client.close();
 });
 
