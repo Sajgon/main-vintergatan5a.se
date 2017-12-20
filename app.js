@@ -40,8 +40,8 @@ MongoClient.connect(url, function(err, database) {
   assert.equal(null, err);
   console.log("Connected correctly to server");
     
-    const myDB = database.db('dbName')
-    const collection = myDB.collection('visitors')
+    const myDB = database.db(dbName);
+    const collection = myDB.collection('visitors');
     
     var documents = collection.find({});
     console.log("documents",documents);
