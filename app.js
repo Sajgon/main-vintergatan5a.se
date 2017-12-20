@@ -4,7 +4,18 @@ const app = express();
 const scraperjs = require('scraperjs');
 const pm = require("promisemaker");
 const mysql = require('mysql');
-var db = require('../credentials.js');   // Hämta mysql credentials
+const credentials = require('../credentials.js');   // Hämta mysql credentials
+
+const db = pm(
+  mysql.createConnection(credentials),
+  {
+    rejectOnErrors: false,
+    mapArgsToProps: {
+      query: ["rows", "fields"]
+    }
+  }
+);
+
 
 /*
     SCRAPING
