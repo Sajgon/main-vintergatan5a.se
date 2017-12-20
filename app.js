@@ -5,7 +5,7 @@ const scraperjs = require('scraperjs');
 const pm = require("promisemaker");
 const mysql = require('mysql');
 const credentials = require('../credentials.js');   // Hämta mysql credentials
-
+console.log("credentials", credentials);
 const db = pm(
   mysql.createConnection(credentials),
   {
@@ -86,7 +86,7 @@ app.listen(4001,() =>
 
 
 
-console.log(db);
+//console.log(db);
 
 async function test(){
   let tables = await db.query('SHOW TABLES');
