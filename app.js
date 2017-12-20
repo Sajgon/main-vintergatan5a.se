@@ -70,6 +70,14 @@ app.get('/all-news', (req, res) => {
   )
 });
 
+app.get('/', (req, res) => {
+    console.log("Yeey! a user visitor.");
+    let tables = await db.query('SHOW TABLES');
+    console.log("database tables", tables);
+    
+});
+
+
 
 app.listen(4001,() =>
     console.log('Listening on port 4001')
@@ -80,13 +88,6 @@ app.listen(4001,() =>
 
 //console.log(db);
 
-async function test(){
-  let tables = await db.query('SHOW TABLES');
-  console.log(new Date());
-  console.log("database tables", tables);
-}
-
-test();
 
 
 
