@@ -2,11 +2,33 @@
 const express = require('express');
 const app = express();
 const scraperjs = require('scraperjs');
-const pm = require("promisemaker");
-const mysql = require('mysql');
-const credentials = require('../credentials.js');   // Hämta mysql credentials
+//const pm = require("promisemaker");
+//const mysql = require('mysql');
+//const credentials = require('../credentials.js');   // Hämta mysql credentials
 // console.log("credentials", credentials);
-const db = pm(mysql.createConnection(credentials));
+//const db = pm(mysql.createConnection(credentials));
+
+
+const MongoClient = require('mongodb').MongoClient;
+const assert = require('assert');
+ 
+// Connection URL
+var url = 'mongodb://localhost:27017/Vintergatan5a-analystics';
+// Use connect method to connect to the Server
+MongoClient.connect(url, function(err, db) {
+  assert.equal(null, err);
+  console.log("Connected correctly to server");
+ 
+  db.close();
+});
+
+
+
+
+
+
+
+
 
 
 /*
@@ -72,31 +94,8 @@ app.get('/all-news', (req, res) => {
 
 
 app.get('/visitors', (req, res) => {
-    console.log("Yeey! a user visitor.......");
-        
-    async function test(){
-        let tables = await db.query('SHOW TABLES');
-        console.log("database tables", tables);
-    }
-      
-    test();
     
-    console.log(":)");
 });
-
-app.get('*', (req, res) => {
-     console.log("Yeey! a user visitor.");
-        
-    async function test(){
-        let tables = await db.query('SHOW TABLES');
-        console.log("database tables", tables);
-    }
-      
-    test();
-    
-    console.log(":(");
-});
-
 
 
 app.listen(4001,() =>
