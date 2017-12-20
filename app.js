@@ -22,17 +22,8 @@ MongoClient.connect(url, function(err, db) {
  
 
       var collection = db.collection('visitors');
-      // Find some documents
-      collection.find({}).toArray(function(err, docs) {
-        assert.equal(err, null);
-        assert.equal(2, docs.length);
-        console.log("Found the following records", docs);
-      });
-    
  
- 
- 
-
+    console.log("collection",collection);
 });
 
 
