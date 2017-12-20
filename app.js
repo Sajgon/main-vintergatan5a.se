@@ -28,21 +28,14 @@ MongoClient.connect(url, function(err, client) {
  
     const collection = db.collection('vititors');
     
-    
-    var findDocuments = function(db, callback) {
-      // Get the documents collection
-      // Find some documents
-      collection.find({}).toArray(function(err, docs) {
-        assert.equal(err, null);
-        assert.equal(2, docs.length);
-        console.log("Found the following records");
-        console.dir(docs);
-        callback(docs);
-      });
-    }
+  // Get the documents collection
+  // Find some documents
+  collection.find({}).toArray(function(err, docs) {
+    assert.equal(err, null);
+    assert.equal(2, docs.length);
+    console.log("Found the following records", docs);
+  });
 
-    findDocuments();
-    
     client.close();
 });
 
