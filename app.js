@@ -19,7 +19,10 @@ var url = 'mongodb://localhost:27017/Vintergatan5a-analystics';
 MongoClient.connect(url, function(err, db) {
   assert.equal(null, err);
   console.log("Connected correctly to server");
-    console.log("db",db);
+    
+    
+    var cursor = db.collection('inventory').find({});
+       console.log("cursor",cursor);
 
 });
 
