@@ -4,44 +4,28 @@ const app = express();
 const scraperjs = require('scraperjs');
 //const pm = require("promisemaker");
 //const mysql = require('mysql');
-//const credentials = require('../credentials.js');   // Hämta mysql credentials
-// console.log("credentials", credentials);
+const credentials = require('../credentials.js');   // Hämta mysql credentials
+console.log("credentials", credentials);
 //const db = pm(mysql.createConnection(credentials));
 
 
-const MongoClient = require('mongodb').MongoClient;
-const assert = require('assert');
+//const MongoClient = require('mongodb').MongoClient;
+//const assert = require('assert');
  
  
- // Database Name
-const dbName = 'Vintergatan5a-analystics';
-
-// Connection URL
-var url = 'mongodb://localhost:27017/';
+ var mongojs = require('mongojs')
 
 
-// Use connect method to connect to the Server
-MongoClient.connect(url, function(err, client) {
-    assert.equal(null, err);
-    console.log("Connected correctly to server");
-    const db = client.db(dbName);
- 
-    const collection = db.collection('vititors');
-    
-  // Get the documents collection
-  // Find some documents
-  collection.find({}).toArray(function(err, docs) {
-    assert.equal(err, null);
-    assert.equal(2, docs.length);
-    console.log("Found the following records", docs);
-  });
-
-    client.close();
-});
+// we can also provide some credentials 
+var db = mongojs(credentials)
+var mycollection = db.collection('visitors')
 
 
-
-
+// find everything 
+db.mycollection.find(function (err, docs) {
+    // docs is an array of all the documents in mycollection 
+    console.log("documents",docs);
+})
 
 
 
