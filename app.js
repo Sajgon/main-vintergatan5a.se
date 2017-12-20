@@ -43,7 +43,7 @@ MongoClient.connect(url, function(err, database) {
     const myDB = database.db('dbName')
     const collection = myDB.collection('visitors')
     
-    var documents = database.db.collection('visitors').find({});
+    var documents = collection.find({});
     console.log("documents",documents);
 
     insertDocuments(myDB, function() {
