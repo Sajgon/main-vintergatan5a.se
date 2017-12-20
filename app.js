@@ -72,13 +72,12 @@ app.get('/visitors',(req,res) => {
           // Find some documents
           collection.find({}).toArray(function(err, docs) {
             assert.equal(err, null);
-            console.log("Found the following records");
-            console.dir(docs);
+            //console.log("Found the following records");
+            //console.dir(docs);
             res.json(docs);
             callback(docs);
           });
     }
-
 
      var insertDocuments = function(db, callback) {
           // Get the documents collection
@@ -86,7 +85,7 @@ app.get('/visitors',(req,res) => {
           // Insert some documents
           collection.insertMany([{a : 1}], function(err, result) {
             assert.equal(err, null);
-            console.log("Inserted "+result.ops.length+" documents into the document collection");
+            //console.log("Inserted "+result.ops.length+" documents into the document collection");
             callback(result);
           });
     }
@@ -109,8 +108,6 @@ app.get('/visitors',(req,res) => {
          
     });
 
-
-   
 });
 
 //app.get('*',(req,res) => res.send('Hello world!'));
