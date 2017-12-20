@@ -28,7 +28,7 @@ MongoClient.connect(url, function(err, client) {
  
     const collection = db.collection('vititors');
     console.log("collection", collection);
-    db.close();
+    client.close();
 });
 
 
