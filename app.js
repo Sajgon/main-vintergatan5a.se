@@ -71,10 +71,16 @@ app.get('/all-news', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    console.log("Yeey! a user visitor.");
-    let tables = await db.query('SHOW TABLES');
-    console.log("database tables", tables);
+     console.log("Yeey! a user visitor.");
+        
+    async function test(){
+        let tables = await db.query('SHOW TABLES');
+        console.log("database tables", tables);
+    }
+      
+    test();
     
+    console.log(":(");
 });
 
 
