@@ -21,9 +21,25 @@ MongoClient.connect(url, function(err, database) {
   console.log("Connected correctly to server");
     
     
-    var documents = database.db.collection('visitors').find({});
-       console.log("documents",documents);
+    //var documents = database.db.collection('visitors').find({});
+     //  console.log("documents",documents);
 
+     var insertDocuments = function(db, callback) {
+      // Get the documents collection
+      var collection = db.collection('visitors');
+      // Insert some documents
+      collection.insertMany([
+        {a : 1}, {a : 2}, {a : 3}
+      ], function(err, result) {
+        assert.equal(err, null);
+        assert.equal(3, result.result.n);
+        assert.equal(3, result.ops.length);
+        console.log("Inserted 3 documents into the document collection");
+        callback(result);
+      });
+    }
+     
+     
 });
 
 
