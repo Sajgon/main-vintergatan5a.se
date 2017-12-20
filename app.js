@@ -17,7 +17,7 @@ console.log("credentials", credentials);
 
 
 // we can also provide some credentials 
-var db = mongojs("Vintergatan5a-analystics");
+var db = mongojs("localhost:27017/Vintergatan5a-analystics");
 
 console.log("db",db);
 
