@@ -2,7 +2,8 @@
 const express = require('express');
 const app = express();
 const scraperjs = require('scraperjs');
-
+const pm = require("promisemaker");
+const mysql = require('mysql');
 /*
     SCRAPING
     SCRAPING
@@ -64,11 +65,43 @@ app.get('/all-news', (req, res) => {
   )
 });
 
-app.get('/', (req, res) => {
-  
-});
-
 
 app.listen(4001,() =>
     console.log('Listening on port 4001')
 );
+
+
+
+
+
+// get database tables
+const db = pm(
+  mysql.createConnection({
+    host: "127.0.0.1",
+    user: "root",
+    password: "x8zxwa9c",
+    database: "Vintergatan5a"
+  }),
+  {
+    rejectOnErrors: false,
+    mapArgsToProps: {
+      query: ["rows", "fields"]
+    }
+  }
+);
+
+async function test(){
+  let tables = await db.query('SHOW TABLES');
+  console.log("database tables", tables);
+}
+
+test();
+
+
+
+
+
+
+
+
+
