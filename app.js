@@ -19,8 +19,10 @@ console.log("credentials", credentials);
 // we can also provide some credentials 
 var db = mongojs(credentials);
 var mycollection = db.collection('visitors');
+var mycollection2 = db.collection('visitorsf');
 
 console.log("mycollection",mycollection);
+console.log("mycollection2",mycollection2);
 // find everything 
 db.mycollection.find(function (err, docs) {
     // docs is an array of all the documents in mycollection 
