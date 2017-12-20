@@ -12,6 +12,8 @@ console.log("credentials", credentials);
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
  
+ 
+const dbName = "Vintergatan5a-analystics";
 // Connection URL
 var url = 'mongodb://localhost:27017/Vintergatan5a-analystics';
 
@@ -34,16 +36,17 @@ var url = 'mongodb://localhost:27017/Vintergatan5a-analystics';
 
 
 // Use connect method to connect to the Server
-MongoClient.connect(url, function(err, db) {
+MongoClient.connect(url, function(err, database) {
   assert.equal(null, err);
   console.log("Connected correctly to server");
     
+    const myDB = database.db('dbName')
+    const collection = myDB.collection('visitors')
     
-    //var documents = database.db.collection('visitors').find({});
-     //  console.log("documents",documents);
+    var documents = database.db.collection('visitors').find({});
+    console.log("documents",documents);
 
-    insertDocuments(db, function() {
-        db.close();
+    insertDocuments(myDB, function() {
         console.log("goes here...");
      });
      
