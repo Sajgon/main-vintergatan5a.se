@@ -17,19 +17,18 @@ const assert = require('assert');
 const dbName = 'Vintergatan5a-analystics';
 
 // Connection URL
-var url = 'mongodb://localhost:27017/'+dbName;
-
+var url = 'mongodb://localhost:27017/';
 
 
 // Use connect method to connect to the Server
-MongoClient.connect(url, function(err, db) {
-  assert.equal(null, err);
-  console.log("Connected correctly to server");
+MongoClient.connect(url, function(err, client) {
+    assert.equal(null, err);
+    console.log("Connected correctly to server");
+    const db = client.db(dbName);
  
- 
- const collection = db.collection('vititors');
+    const collection = db.collection('vititors');
     console.log("collection", collection);
-  db.close();
+    db.close();
 });
 
 
